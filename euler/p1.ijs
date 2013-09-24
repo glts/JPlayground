@@ -15,3 +15,9 @@ NB. Terser!
 divby3or5=: 0&= @: (3&| <. 5&|)
 +/ (#~ divby3or5) >:i.999
                         NB. => 233168
+
+NB. or ...
+divby3or5=: 3&| (0 = <.) 5&| NB. TODO how does this work?
+
+NB. ... and the one-liner, if you're so inclined :)
++/ (#~ (3&| (0 = <.) 5&|)) >:i.999
