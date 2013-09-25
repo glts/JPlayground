@@ -21,4 +21,3 @@ threesfives=: #~ 0: = 3&| <. 5&|
 
 NB. ... and the one-liner, if you're so inclined :)
 +/ (#~ 0: = 3&| <. 5&|) }.i.1000
-                        NB. => 233168
