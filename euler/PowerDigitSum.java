@@ -1,7 +1,7 @@
 import java.math.BigInteger;
 
 /**
- * Prints the sum of the digits in the number 2^1000. This answers Euler
+ * Prints the sum of the digits of the number 2^1000. This answers Euler
  * problem 16, and verifies the result produced by the corresponding J code.
  */
 class PowerDigitSum {
