@@ -11,4 +11,11 @@ m=: {: @: ((0: = |)"1 0~)
 (#~ m) >:i.20                   NB. => 1 2 4 5 10 20
 NB. TODO ">:i." should be part of the function, not the data
 
+triangle=: +/@:>:@:i."0
+triangle >:i.7                  NB. => 1 3 6 10 15 21 28
+
+seq=: >:@:i."0
+factors=: (0: = (|~ seq)) # seq
+numdiv=: $@:factors
+
 NB. TODO ...
