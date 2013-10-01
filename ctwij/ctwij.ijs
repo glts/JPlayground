@@ -14,7 +14,15 @@ mask=. emp_client = y
 +/ (mask # billrate) * +/"1 mask # hoursworked
 )
 
-NB. Main.
+NB. Finds for each day of the month the employee who billed the most hours.
+dailydrudge=: 3 : 0
+((|: hoursworked) i."1 0 >./ hoursworked) { empno
+)
+
+NB. Main
 
 NB. Problem 4
 echo billclient 10025
+
+NB. Problem 5
+echo dailydrudge''

@@ -39,10 +39,36 @@ int billclient(int cno)
     return total;
 }
 
+/* Finds for each day of the month the employee who billed the most hours. */
+void dailydrudge(int drudges[31])
+{
+    int i, j, highhours;
+    for (i = 0; i < 31; ++i) {
+        highhours = -1;
+        for (j = 0; j < NEMP; ++j) {
+            if (hoursworked[j][i] > highhours) {
+                drudges[i] = empno[j];
+                highhours = hoursworked[j][i];
+            }
+        }
+    }
+}
+
 int main(int argc, char *argv[])
 {
+    int i;
+
     /* Problem 4 */
     int clientno = 10025;
     printf("%d\n", billclient(clientno));
+
+    /* Problem 5 */
+    int drudges[31];
+    dailydrudge(drudges);
+    for (i = 0; i < 30; i++) {
+        printf("%d ", drudges[i]);
+    }
+    printf("%d\n", drudges[30]);
+
     return 0;
 }
