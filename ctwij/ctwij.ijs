@@ -30,19 +30,25 @@ dailydrudge=: 3 : 0
 ((|: hoursworked) i."1 0 >./ hoursworked) { empno
 )
 
+NB. Returns the employees, in descending order of the profit brought in by each.
+producers=: 3 : 'empno \: empprofit 0'
+
 NB. Main
 
-NB. Problem 1
+echo 'Problem 1'
 echo emphours''
 
-NB. Problem 2
+echo 'Problem 2'
 echo empearnings''
 
-NB. Problem 3
+echo 'Problem 3'
 echo empprofit''
 
-NB. Problem 4
+echo 'Problem 4'
 echo billclient 10025
 
-NB. Problem 5
+echo 'Problem 5'
 echo dailydrudge''
+
+echo 'Problem 6'
+echo producers''

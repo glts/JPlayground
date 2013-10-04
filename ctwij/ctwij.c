@@ -86,11 +86,32 @@ void dailydrudge(int drudges[31])
     }
 }
 
+/* Returns the employees, in descending order of the profit brought in by each. */
+void producers(int prods[])
+{
+    int i, j, max, maxprofit;
+    int profits[NEMP];
+    empprofit(profits);
+
+    /* Since this is a toy program we can afford selection sort. */
+    for (i = 0; i < NEMP; ++i) {
+        maxprofit = -1;
+        for (j = 0, max = 0; j < NEMP; ++j) {
+            if (profits[j] > maxprofit) {
+                max = j;
+                maxprofit = profits[j];
+            }
+        }
+        prods[i] = empno[max];
+        profits[max] = -1;
+    }
+}
+
 int main(int argc, char *argv[])
 {
     int i;
 
-    /* Problem 1 */
+    printf("Problem 1\n");
     int hrs[NEMP];
     emphours(hrs);
     for (i = 0; i < NEMP-1; i++) {
@@ -98,7 +119,7 @@ int main(int argc, char *argv[])
     }
     printf("%d\n", hrs[NEMP-1]);
 
-    /* Problem 2 */
+    printf("Problem 2\n");
     int earns[NEMP];
     empearnings(earns);
     for (i = 0; i < NEMP-1; i++) {
@@ -106,7 +127,7 @@ int main(int argc, char *argv[])
     }
     printf("%d\n", earns[NEMP-1]);
 
-    /* Problem 3 */
+    printf("Problem 3\n");
     int profit[NEMP];
     empprofit(profit);
     for (i = 0; i < NEMP-1; i++) {
@@ -114,17 +135,25 @@ int main(int argc, char *argv[])
     }
     printf("%d\n", profit[NEMP-1]);
 
-    /* Problem 4 */
+    printf("Problem 4\n");
     int clientno = 10025;
     printf("%d\n", billclient(clientno));
 
-    /* Problem 5 */
+    printf("Problem 5\n");
     int drudges[31];
     dailydrudge(drudges);
     for (i = 0; i < 30; i++) {
         printf("%d ", drudges[i]);
     }
     printf("%d\n", drudges[30]);
+
+    printf("Problem 6\n");
+    int prods[NEMP];
+    producers(prods);
+    for (i = 0; i < NEMP-1; i++) {
+        printf("%d ", prods[i]);
+    }
+    printf("%d\n", prods[i]);
 
     return 0;
 }
