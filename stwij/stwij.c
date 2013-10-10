@@ -143,6 +143,33 @@ void custbyprofit(int clients[])
     }
 }
 
+/* TODO work in progress*/
+int renderuntocaesar(float shekels[])
+{
+    int bktmin[4] = {0, 6000, 10000, 50000};
+    float bktrate[3] = {0.05, 0.10, 0.20};
+    int i, j;
+    int earns[NEMP];
+    for (i = 0; i < NEMP; ++i) {
+        earns[i] = 0;
+    }
+
+    /* Slightly less capitalist than book example: do not cap high income taxes. */
+    empearnings(earns);
+    for (i = 0; i < NEMP; ++i) {
+        shekels[i] = 0.0;
+        for (j = 0; j < sizeof(bktrate)/sizeof(bktrate[0]); ++j) {
+            if (earns[i] > bktmin[j]) {
+                int bktval = bktmin[j+1];
+                if (earns[i] < bktval) {
+                    bktval = earns[i];
+                }
+                shekels[i] += (bktval - bktmin[j]) * bktrate[j]; /* TODO check */
+            }
+        }
+    }
+}
+
 int main(int argc, char *argv[])
 {
     int i;
@@ -198,6 +225,14 @@ int main(int argc, char *argv[])
         printf("%d ", clients[i]);
     }
     printf("%d\n", clients[i]);
+
+    printf("Problem 8\n");
+    float shekels[NEMP];
+    renderuntocaesar(shekels);
+    for (i = 0; i < NEMP-1; i++) {
+        printf("%.2f ", shekels[i]);
+    }
+    printf("%.2f\n", shekels[i]);
 
     return 0;
 }
