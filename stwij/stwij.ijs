@@ -38,6 +38,14 @@ custbyprofit=: 3 : 0
 clientlist \: +/ (clientlist ="1 0 emp_client) * empprofit 0
 )
 
+NB. Calculates withholding tax on each employee's earnings.
+renderuntocaesar=: 3 : 0
+bktmin=. 0 6000 10000 50000
+bktrate=. 0.05 0.10 0.20 0.50 NB. TODO don't use 0.50
+bktearns=. 0 >. ((1 |.!._ bktmin) <."1 0 empearnings'') -"1 bktmin
++/"1 bktrate *"1 bktearns
+)
+
 NB. Main
 
 echo 'Problem 1'
@@ -60,3 +68,6 @@ echo producers''
 
 echo 'Problem 7'
 echo custbyprofit''
+
+echo 'Problem 8'
+echo 0j2 ": renderuntocaesar''
