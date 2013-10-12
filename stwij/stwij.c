@@ -24,7 +24,8 @@ int hoursworked[NEMP][31] = {
 };
 
 /* Finds the number of hours each employee worked in the given month. */
-void emphours(int hrs[]) {
+void emphours(int hrs[])
+{
     int i, j;
     for (i = 0; i < NEMP; ++i) {
         for (j = 0; j < 31; ++j) {
@@ -34,7 +35,8 @@ void emphours(int hrs[]) {
 }
 
 /* Determines the wages earned by each employee in the given month. */
-void empearnings(int earns[]) {
+void empearnings(int earns[])
+{
     int i, j;
     for (i = 0; i < NEMP; ++i) {
         for (j = 0; j < 31; ++j) {
@@ -45,7 +47,8 @@ void empearnings(int earns[]) {
 }
 
 /* Determines the profit brought in by each employee. */
-void empprofit(int profit[]) {
+void empprofit(int profit[])
+{
     int i, j, temp;
     for (i = 0; i < NEMP; ++i) {
         for (j = 0, temp = 0; j < 31; ++j) {
@@ -90,7 +93,7 @@ void dailydrudge(int drudges[31])
 void producers(int prods[])
 {
     int i, j, max, maxprofit;
-    int profits[NEMP];
+    int profits[NEMP] = { 0 };
     empprofit(profits);
 
     /* Since this is a toy program we can afford selection sort. */
@@ -111,11 +114,8 @@ void producers(int prods[])
 void custbyprofit(int clients[])
 {
     int i, j, k, maxprofit;
-    int profits[NEMP];
-    int clientprofits[NCLIENTS];
-    for (i = 0; i < NCLIENTS; ++i) {
-        clientprofits[i] = 0;
-    }
+    int profits[NEMP] = { 0 };
+    int clientprofits[NCLIENTS] = { 0 };
 
     empprofit(profits);
     for (i = 0; i < NEMP; ++i) {
@@ -175,7 +175,7 @@ int main(int argc, char *argv[])
     int i;
 
     printf("Problem 1\n");
-    int hrs[NEMP];
+    int hrs[NEMP] = { 0 };
     emphours(hrs);
     for (i = 0; i < NEMP-1; i++) {
         printf("%d ", hrs[i]);
@@ -183,7 +183,7 @@ int main(int argc, char *argv[])
     printf("%d\n", hrs[NEMP-1]);
 
     printf("Problem 2\n");
-    int earns[NEMP];
+    int earns[NEMP] = { 0 };
     empearnings(earns);
     for (i = 0; i < NEMP-1; i++) {
         printf("%d ", earns[i]);
@@ -191,7 +191,7 @@ int main(int argc, char *argv[])
     printf("%d\n", earns[NEMP-1]);
 
     printf("Problem 3\n");
-    int profit[NEMP];
+    int profit[NEMP] = { 0 };
     empprofit(profit);
     for (i = 0; i < NEMP-1; i++) {
         printf("%d ", profit[i]);
@@ -203,7 +203,7 @@ int main(int argc, char *argv[])
     printf("%d\n", billclient(clientno));
 
     printf("Problem 5\n");
-    int drudges[31];
+    int drudges[31] = { 0 };
     dailydrudge(drudges);
     for (i = 0; i < 30; i++) {
         printf("%d ", drudges[i]);
@@ -211,7 +211,7 @@ int main(int argc, char *argv[])
     printf("%d\n", drudges[30]);
 
     printf("Problem 6\n");
-    int prods[NEMP];
+    int prods[NEMP] = { 0 };
     producers(prods);
     for (i = 0; i < NEMP-1; i++) {
         printf("%d ", prods[i]);
@@ -219,7 +219,7 @@ int main(int argc, char *argv[])
     printf("%d\n", prods[i]);
 
     printf("Problem 7\n");
-    int clients[NCLIENTS];
+    int clients[NCLIENTS] = { 0 };
     custbyprofit(clients);
     for (i = 0; i < NCLIENTS-1; i++) {
         printf("%d ", clients[i]);
