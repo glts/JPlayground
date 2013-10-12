@@ -170,6 +170,16 @@ int renderuntocaesar(float shekels[])
     }
 }
 
+/* Prints the contents of an array of integers. */
+void printarray(int ary[], size_t len)
+{
+    int i;
+    for (i = 0; i < len-1; i++) {
+        printf("%d ", ary[i]);
+    }
+    printf("%d\n", ary[len-1]);
+}
+
 int main(int argc, char *argv[])
 {
     int i;
@@ -177,26 +187,17 @@ int main(int argc, char *argv[])
     printf("Problem 1\n");
     int hrs[NEMP] = { 0 };
     emphours(hrs);
-    for (i = 0; i < NEMP-1; i++) {
-        printf("%d ", hrs[i]);
-    }
-    printf("%d\n", hrs[NEMP-1]);
+    printarray(hrs, NEMP);
 
     printf("Problem 2\n");
     int earns[NEMP] = { 0 };
     empearnings(earns);
-    for (i = 0; i < NEMP-1; i++) {
-        printf("%d ", earns[i]);
-    }
-    printf("%d\n", earns[NEMP-1]);
+    printarray(earns, NEMP);
 
     printf("Problem 3\n");
     int profit[NEMP] = { 0 };
     empprofit(profit);
-    for (i = 0; i < NEMP-1; i++) {
-        printf("%d ", profit[i]);
-    }
-    printf("%d\n", profit[NEMP-1]);
+    printarray(profit, NEMP);
 
     printf("Problem 4\n");
     int clientno = 10025;
@@ -205,26 +206,17 @@ int main(int argc, char *argv[])
     printf("Problem 5\n");
     int drudges[31] = { 0 };
     dailydrudge(drudges);
-    for (i = 0; i < 30; i++) {
-        printf("%d ", drudges[i]);
-    }
-    printf("%d\n", drudges[30]);
+    printarray(drudges, 31);
 
     printf("Problem 6\n");
     int prods[NEMP] = { 0 };
     producers(prods);
-    for (i = 0; i < NEMP-1; i++) {
-        printf("%d ", prods[i]);
-    }
-    printf("%d\n", prods[i]);
+    printarray(prods, NEMP);
 
     printf("Problem 7\n");
     int clients[NCLIENTS] = { 0 };
     custbyprofit(clients);
-    for (i = 0; i < NCLIENTS-1; i++) {
-        printf("%d ", clients[i]);
-    }
-    printf("%d\n", clients[i]);
+    printarray(clients, NCLIENTS);
 
     printf("Problem 8\n");
     float shekels[NEMP];
