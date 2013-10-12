@@ -24,7 +24,8 @@ int hoursworked[NEMP][31] = {
 };
 
 /* Finds the number of hours each employee worked in the given month. */
-void emphours(int hrs[]) {
+void emphours(int hrs[])
+{
     int i, j;
     for (i = 0; i < NEMP; ++i) {
         for (j = 0; j < 31; ++j) {
@@ -34,7 +35,8 @@ void emphours(int hrs[]) {
 }
 
 /* Determines the wages earned by each employee in the given month. */
-void empearnings(int earns[]) {
+void empearnings(int earns[])
+{
     int i, j;
     for (i = 0; i < NEMP; ++i) {
         for (j = 0; j < 31; ++j) {
@@ -45,7 +47,8 @@ void empearnings(int earns[]) {
 }
 
 /* Determines the profit brought in by each employee. */
-void empprofit(int profit[]) {
+void empprofit(int profit[])
+{
     int i, j, temp;
     for (i = 0; i < NEMP; ++i) {
         for (j = 0, temp = 0; j < 31; ++j) {
