@@ -143,28 +143,31 @@ void custbyprofit(int clients[])
     }
 }
 
-/* TODO work in progress*/
-int renderuntocaesar(float shekels[])
+/* Calculates withholding tax on each employee's earnings. */
+void renderuntocaesar(float shekels[])
 {
-    int bktmin[4] = {0, 6000, 10000, 50000};
-    float bktrate[3] = {0.05, 0.10, 0.20};
-    int i, j;
-    int earns[NEMP];
-    for (i = 0; i < NEMP; ++i) {
-        earns[i] = 0;
-    }
+    int i, j, bktval;
+    /* Slightly less capitalist than book example: do not cap high incomes
+     * at 1e9 shekels. */
+    int bktmin[4] = { 0, 6000, 10000, 20000 };
+    float bktrate[4] = { 0.05, 0.10, 0.20, 0.30 };
+    int earns[NEMP] = { 0 };
 
-    /* Slightly less capitalist than book example: do not cap high income taxes. */
     empearnings(earns);
     for (i = 0; i < NEMP; ++i) {
         shekels[i] = 0.0;
         for (j = 0; j < sizeof(bktrate)/sizeof(bktrate[0]); ++j) {
             if (earns[i] > bktmin[j]) {
-                int bktval = bktmin[j+1];
-                if (earns[i] < bktval) {
+                /* Highest bracket has no cap. */
+                if (j == sizeof(bktrate)/sizeof(bktrate[0])-1) {
                     bktval = earns[i];
+                } else {
+                    bktval = bktmin[j+1];
+                    if (earns[i] < bktval) {
+                        bktval = earns[i];
+                    }
                 }
-                shekels[i] += (bktval - bktmin[j]) * bktrate[j]; /* TODO check */
+                shekels[i] += (bktval - bktmin[j]) * bktrate[j];
             }
         }
     }
