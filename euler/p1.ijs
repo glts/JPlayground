@@ -2,7 +2,7 @@ NB. Problem 1: Multiples of 3 and 5
 
 NB. This can still become simpler, can it not?
 
-NB. TODO how to *filter*? how to express "x mod 3 == 0"?
+NB. TODO How to *filter*? How to express "x mod 3 == 0"?
 divby3=: (=&0) @: (3&|)
 (#~ divby3) >:i.9       NB. => 3 6 9
 divby5=: (=&0) @: (5&|)
